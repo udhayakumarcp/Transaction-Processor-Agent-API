@@ -2,7 +2,8 @@
 
 from io import BytesIO
 import json
-import requests
+
+# import requests
 import pandas as pd
 import pdfplumber
 from fastapi import UploadFile
@@ -88,7 +89,11 @@ def process_and_categorize(
 
     if ai_model == AiModel.GEMINI:
         gemini = ChatGoogleGenerativeAI(
-            model="gemini-2.0-pro-exp-02-05", google_api_key=api_key, temperature=0
+            # gemini-2.0-flash
+            # gemini-2.0-pro-exp-02-05
+            model="gemini-2.0-flash",
+            google_api_key=api_key,
+            temperature=0,
         )
 
         response = gemini.invoke(prompt)
